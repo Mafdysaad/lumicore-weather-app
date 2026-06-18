@@ -19,4 +19,16 @@ class Fontstyle {
     letterSpacing: 1.5,
     color: Color(0xff31507F),
   );
+  static TextStyle spacegroteskBold = TextStyle(
+    fontFamily: 'spaceGrotesk',
+    fontWeight: FontWeight.w700,
+    letterSpacing: 1.5,
+    color: Color(0xff31507F),
+  );
+  static TextStyle spacegroteskReguler = TextStyle(
+    fontFamily: 'spaceGrotesk',
+    fontWeight: FontWeight.w400,
+    letterSpacing: 1.5,
+    color: Color(0xff31507F),
+  );
 }

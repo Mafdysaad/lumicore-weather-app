@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app_assessment/core/utils/fontstyle.dart';
 
 class Hompage extends StatefulWidget {
   const Hompage({super.key});
@@ -45,7 +46,7 @@ class _HompageState extends State<Hompage> {
                   ),
                 ),
               )
-            : Text("Weather"),
+            : Text("Weather", style: Fontstyle.spacegrotesk_semiBold),
         centerTitle: true,
         actions: [
           IconButton(onPressed: () {}, icon: Icon(Icons.light_mode, size: 40)),

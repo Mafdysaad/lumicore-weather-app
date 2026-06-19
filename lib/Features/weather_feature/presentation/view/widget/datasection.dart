@@ -18,14 +18,14 @@ class Datasection extends StatelessWidget {
         Text(
           rigthData,
           style: Fontstyle.spacegroteskMedium.copyWith(
-            fontSize: context.responsiveFont(30),
+            fontSize: context.responsiveFont(24),
           ),
         ),
         Spacer(),
         Text(
           leftData,
           style: Fontstyle.spacegroteskMedium.copyWith(
-            fontSize: context.responsiveFont(30),
+            fontSize: context.responsiveFont(24),
           ),
         ),
       ],

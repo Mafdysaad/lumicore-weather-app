@@ -19,7 +19,7 @@ class _HompageState extends State<Hompage> {
     return Scaffold(
       appBar: Customappbar(),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 25),
+        padding: const EdgeInsets.symmetric(vertical: 25),
         child: Column(
           children: [
             SizedBox(height: 20),

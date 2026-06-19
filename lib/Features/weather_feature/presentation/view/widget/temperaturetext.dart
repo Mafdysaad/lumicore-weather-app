@@ -23,14 +23,14 @@ class Temperaturetext extends StatelessWidget {
           child: Text(
             text,
             style: Fontstyle.spacegroteskBold.copyWith(
-              fontSize: responsivesize(fontSize: fontsize, screenWidth: width),
+              fontSize: context.responsiveFont(fontsize),
             ),
           ),
         ),
         Text(
           '°',
           style: Fontstyle.spacegroteskBold.copyWith(
-            fontSize: responsivesize(fontSize: fontsize, screenWidth: width),
+            fontSize: context.responsiveFont(fontsize),
           ),
         ),
       ],

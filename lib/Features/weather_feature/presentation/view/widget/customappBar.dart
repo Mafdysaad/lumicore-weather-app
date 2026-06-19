@@ -39,10 +39,7 @@ class _CustomappbarState extends State<Customappbar> {
           : Text(
               "Weather",
               style: Fontstyle.spacegroteskSemibold.copyWith(
-                fontSize: responsivesize(
-                  fontSize: 30,
-                  screenWidth: MediaQuery.of(context).size.width,
-                ),
+                fontSize: context.responsiveFont(30),
               ),
             ),
       centerTitle: true,

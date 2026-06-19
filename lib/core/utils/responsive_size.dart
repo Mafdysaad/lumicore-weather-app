@@ -1,21 +1,21 @@
-double responsivesize({required double fontSize, required double screenWidth}) {
-  double scalfactor = getscalfactor(screenWidth);
-  double responsiveSize = fontSize * scalfactor;
-  double lowerLimit = fontSize * .6;
-  double upperLimit = fontSize * 1.2;
-  return responsiveSize.clamp(lowerLimit, upperLimit);
-}
+import 'package:flutter/material.dart';
 
-double getscalfactor(double width) {
-  // PlatformDispatcher dispatcher = PlatformDispatcher.instance;
-  // double physicalwidth = dispatcher.views.first.physicalSize.width;
-  // double devicepixelratio = dispatcher.views.first.devicePixelRatio;
-  // double width_of_screen = physicalwidth / devicepixelratio;
-  if (width < 800) {
-    return width / 550;
-  } else if (width < 1300) {
-    return width / 1000;
-  } else {
-    return width / 1800;
+extension ResponsiveFontExtension on BuildContext {
+  double responsiveFont(double fontSize) {
+    final width = MediaQuery.sizeOf(this).width;
+
+    double scaleFactor;
+
+    if (width < 800) {
+      scaleFactor = width / 550;
+    } else if (width < 1300) {
+      scaleFactor = width / 1000;
+    } else {
+      scaleFactor = width / 1800;
+    }
+
+    final responsiveSize = fontSize * scaleFactor;
+
+    return responsiveSize.clamp(fontSize * .6, fontSize * 1.2);
   }
 }

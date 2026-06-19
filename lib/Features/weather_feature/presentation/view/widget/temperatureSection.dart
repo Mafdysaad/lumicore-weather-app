@@ -9,33 +9,26 @@ class Temperaturesection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.refresh),
-            iconSize: 40,
-          ),
-          Temperaturetext(fontsize: 72, text: '27'),
-          Column(
-            children: [
-              const SizedBox(height: 35),
-              Temperaturetext(fontsize: 48, text: '20'),
-            ],
-          ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
 
-          Text(
+      children: [
+        IconButton(onPressed: () {}, icon: const Icon(Icons.refresh)),
+        Temperaturetext(fontsize: 38, text: '27'),
+        Transform.translate(
+          offset: const Offset(0, 14),
+          child: Temperaturetext(fontsize: 30, text: '20'),
+        ),
+        Transform.translate(
+          offset: const Offset(0, -10),
+          child: Text(
             'C',
             style: Fontstyle.spacegroteskBold.copyWith(
-              fontSize: responsivesize(fontSize: 38, screenWidth: width),
+              fontSize: context.responsiveFont(24),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

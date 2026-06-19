@@ -18,10 +18,7 @@ class Header extends StatelessWidget {
             Text(
               'wendsday 22,06,2026',
               style: Fontstyle.spacegroteskLight.copyWith(
-                fontSize: responsivesize(
-                  fontSize: 15,
-                  screenWidth: MediaQuery.of(context).size.width,
-                ),
+                fontSize: context.responsiveFont(15),
               ),
             ),
             Row(
@@ -31,10 +28,7 @@ class Header extends StatelessWidget {
                 Text(
                   'Alexandria,',
                   style: Fontstyle.spacegroteskSemibold.copyWith(
-                    fontSize: responsivesize(
-                      fontSize: 27,
-                      screenWidth: MediaQuery.of(context).size.width,
-                    ),
+                    fontSize: context.responsiveFont(27),
                   ),
                 ),
               ],

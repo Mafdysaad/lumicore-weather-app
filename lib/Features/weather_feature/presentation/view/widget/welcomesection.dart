@@ -24,19 +24,13 @@ class Welcomesection extends StatelessWidget {
               Text(
                 'good morning ',
                 style: Fontstyle.spacegroteskLight.copyWith(
-                  fontSize: responsivesize(
-                    fontSize: 16,
-                    screenWidth: MediaQuery.of(context).size.width,
-                  ),
+                  fontSize: context.responsiveFont(16),
                 ),
               ),
               Text(
                 'Mafdy Saad ',
                 style: Fontstyle.spacegroteskMedium.copyWith(
-                  fontSize: responsivesize(
-                    fontSize: 28,
-                    screenWidth: MediaQuery.of(context).size.width,
-                  ),
+                  fontSize: context.responsiveFont(28),
                 ),
               ),
             ],

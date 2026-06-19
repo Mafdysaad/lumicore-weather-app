@@ -65,7 +65,7 @@ flutter:
   fonts:
     - family: spaceGrotesk
       fonts:
-        - asset: assets/fonts/spaceGrotesk/SpaceGrotesk-Regular.otf
+        - asset: assets/fonts/spaceGrotesk/SpaceGrotesk-Regular.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

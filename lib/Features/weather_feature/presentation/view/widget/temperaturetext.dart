@@ -13,7 +13,6 @@ class Temperaturetext extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
     return Row(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -22,15 +21,17 @@ class Temperaturetext extends StatelessWidget {
           padding: const EdgeInsets.only(top: 8),
           child: Text(
             text,
-            style: Fontstyle.spacegroteskBold.copyWith(
-              fontSize: context.responsiveFont(fontsize),
+            style: Fontstyle.spacegroteskBold(
+              context: context,
+              fontsize: fontsize,
             ),
           ),
         ),
         Text(
           '°',
-          style: Fontstyle.spacegroteskBold.copyWith(
-            fontSize: context.responsiveFont(fontsize),
+          style: Fontstyle.spacegroteskBold(
+            context: context,
+            fontsize: fontsize,
           ),
         ),
       ],

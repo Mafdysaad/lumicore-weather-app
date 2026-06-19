@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app_assessment/core/utils/fontstyle.dart';
-import 'package:weather_app_assessment/core/utils/responsive_size.dart';
 
 class Header extends StatelessWidget {
   const Header({super.key});
@@ -17,9 +16,7 @@ class Header extends StatelessWidget {
           children: [
             Text(
               'wendsday 22,06,2026',
-              style: Fontstyle.spacegroteskLight.copyWith(
-                fontSize: context.responsiveFont(15),
-              ),
+              style: Fontstyle.spacegroteskLight15(context),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -27,9 +24,7 @@ class Header extends StatelessWidget {
                 Icon(Icons.location_on_outlined),
                 Text(
                   'Alexandria,',
-                  style: Fontstyle.spacegroteskSemibold.copyWith(
-                    fontSize: context.responsiveFont(27),
-                  ),
+                  style: Fontstyle.spacegroteskSemibold(context),
                 ),
               ],
             ),

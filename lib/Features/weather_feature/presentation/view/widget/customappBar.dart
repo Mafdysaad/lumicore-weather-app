@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app_assessment/Features/weather_feature/presentation/view/widget/customtextfiled.dart';
+import 'package:weather_app_assessment/core/theme/themecubit/theme_cubit.dart';
 import 'package:weather_app_assessment/core/utils/fontstyle.dart';
-import 'package:weather_app_assessment/core/utils/responsive_size.dart';
 
 class Customappbar extends StatefulWidget implements PreferredSizeWidget {
   const Customappbar({super.key});
@@ -36,15 +37,17 @@ class _CustomappbarState extends State<Customappbar> {
       ),
       title: isSearch
           ? Customtextfield()
-          : Text(
-              "Weather",
-              style: Fontstyle.spacegroteskSemibold.copyWith(
-                fontSize: context.responsiveFont(30),
-              ),
-            ),
+          : Text("Weather", style: Fontstyle.spacegroteskSemibold(context)),
       centerTitle: true,
       actions: [
-        IconButton(onPressed: () {}, icon: Icon(Icons.light_mode, size: 40)),
+        IconButton(
+          onPressed: () {
+            context.read<ThemeCubit>().toggleTheme();
+          },
+          icon: context.watch<ThemeCubit>().state == ThemeMode.dark
+              ? Icon(Icons.light_mode, size: 40)
+              : Icon(Icons.dark_mode, size: 40),
+        ),
       ],
     );
   }

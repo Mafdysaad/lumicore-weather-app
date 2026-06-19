@@ -15,19 +15,9 @@ class Datasection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(
-          rigthData,
-          style: Fontstyle.spacegroteskMedium.copyWith(
-            fontSize: context.responsiveFont(24),
-          ),
-        ),
+        Text(rigthData, style: Fontstyle.spacegroteskMedium24(context)),
         Spacer(),
-        Text(
-          leftData,
-          style: Fontstyle.spacegroteskMedium.copyWith(
-            fontSize: context.responsiveFont(24),
-          ),
-        ),
+        Text(leftData, style: Fontstyle.spacegroteskMedium24(context)),
       ],
     );
   }

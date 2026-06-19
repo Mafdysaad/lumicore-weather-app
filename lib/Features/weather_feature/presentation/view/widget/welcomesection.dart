@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:weather_app_assessment/Features/weather_feature/presentation/view/widget/sectionCard.dart';
 import 'package:weather_app_assessment/core/utils/assets.dart';
 import 'package:weather_app_assessment/core/utils/fontstyle.dart';
-import 'package:weather_app_assessment/core/utils/responsive_size.dart';
 
 class Welcomesection extends StatelessWidget {
   const Welcomesection({super.key});
@@ -26,15 +25,11 @@ class Welcomesection extends StatelessWidget {
               children: [
                 Text(
                   'good morning ',
-                  style: Fontstyle.spacegroteskLight.copyWith(
-                    fontSize: context.responsiveFont(16),
-                  ),
+                  style: Fontstyle.spacegroteskLight16(context),
                 ),
                 Text(
                   'Mafdy Saad ',
-                  style: Fontstyle.spacegroteskMedium.copyWith(
-                    fontSize: context.responsiveFont(28),
-                  ),
+                  style: Fontstyle.spacegroteskMedium28(context),
                 ),
               ],
             ),

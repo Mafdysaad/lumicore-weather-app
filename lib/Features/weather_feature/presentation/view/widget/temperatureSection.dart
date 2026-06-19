@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app_assessment/Features/weather_feature/presentation/view/widget/temperatureText.dart';
 import 'package:weather_app_assessment/core/utils/fontstyle.dart';
-import 'package:weather_app_assessment/core/utils/responsive_size.dart';
 
 class Temperaturesection extends StatelessWidget {
   const Temperaturesection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
 
@@ -21,12 +19,7 @@ class Temperaturesection extends StatelessWidget {
         ),
         Transform.translate(
           offset: const Offset(0, -10),
-          child: Text(
-            'C',
-            style: Fontstyle.spacegroteskBold.copyWith(
-              fontSize: context.responsiveFont(24),
-            ),
-          ),
+          child: Text('C', style: Fontstyle.spacegroteskBold24(context)),
         ),
       ],
     );

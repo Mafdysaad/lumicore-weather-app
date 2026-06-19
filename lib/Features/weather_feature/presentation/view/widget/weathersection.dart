@@ -4,7 +4,6 @@ import 'package:weather_app_assessment/Features/weather_feature/presentation/vie
 import 'package:weather_app_assessment/Features/weather_feature/presentation/view/widget/temperatureSection.dart';
 import 'package:weather_app_assessment/core/utils/assets.dart';
 import 'package:weather_app_assessment/core/utils/fontstyle.dart';
-import 'package:weather_app_assessment/core/utils/responsive_size.dart';
 
 class Weathersection extends StatelessWidget {
   const Weathersection({super.key});
@@ -25,17 +24,9 @@ class Weathersection extends StatelessWidget {
           Temperaturesection(),
           Text(
             'updated as of 12:11AM',
-            style: Fontstyle.spacegroteskLight.copyWith(
-              fontSize: context.responsiveFont(18),
-              letterSpacing: 0,
-            ),
+            style: Fontstyle.spacegroteskLight18(context),
           ),
-          Text(
-            'partly sunny',
-            style: Fontstyle.spacegroteskSemibold.copyWith(
-              fontSize: context.responsiveFont(30),
-            ),
-          ),
+          Text('partly sunny', style: Fontstyle.spacegroteskSemibold(context)),
         ],
       ),
     );

@@ -10,32 +10,31 @@ class Weathersection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 300,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Header(),
-          SizedBox(
-            height: 120,
-            width: double.infinity,
-            child: Image.asset(Assets.resourceImagesCloudy),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      spacing: 10,
+      children: [
+        Header(),
+        SizedBox(
+          height: 120,
+          width: double.infinity,
+          child: Image.asset(Assets.resourceImagesCloudy),
+        ),
+        Temperaturesection(),
+        Text(
+          'updated as of 12:11AM',
+          style: Fontstyle.spacegroteskLight.copyWith(
+            fontSize: context.responsiveFont(18),
+            letterSpacing: 0,
           ),
-          Temperaturesection(),
-          Text(
-            'updated as of 12:11AM',
-            style: Fontstyle.spacegroteskLight.copyWith(
-              fontSize: context.responsiveFont(20),
-            ),
+        ),
+        Text(
+          'partly sunny',
+          style: Fontstyle.spacegroteskSemibold.copyWith(
+            fontSize: context.responsiveFont(30),
           ),
-          Text(
-            'partly sunny',
-            style: Fontstyle.spacegroteskSemibold.copyWith(
-              fontSize: context.responsiveFont(30),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

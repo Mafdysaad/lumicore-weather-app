@@ -15,7 +15,7 @@ class AppTheme {
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     scaffoldBackgroundColor: const Color(0xff121212),
-    cardColor: const Color(0xff1E1E1E),
+    cardColor: const Color.fromARGB(255, 83, 82, 82),
     appBarTheme: const AppBarTheme(backgroundColor: Color(0xff121212)),
     textTheme: TextTheme(titleLarge: TextStyle(color: Colors.white)),
   );

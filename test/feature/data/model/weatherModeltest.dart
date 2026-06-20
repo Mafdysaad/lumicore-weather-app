@@ -89,6 +89,70 @@ void main() {
       expect(model.weather!.length, 1);
     });
   });
+  test("should return url string when icon is NotEmpty", () {
+    final json = <String, dynamic>{
+      "coord": {"lon": 55.3047, "lat": 25.2582},
+      "weather": [
+        {"id": 800, "main": "Clear", "description": "clear sky", "icon": "01n"},
+      ],
+      "base": "stations",
+      "main": {
+        "temp": 30.78,
+        "feels_like": 34.87,
+        "temp_min": 30.78,
+        "temp_max": 30.78,
+        "pressure": 1002,
+        "humidity": 62,
+        "sea_level": 1002,
+        "grnd_level": 1001,
+      },
+      "visibility": 10000,
+      "wind": {"speed": 2.84, "deg": 64, "gust": 3.14},
+      "clouds": {"all": 0},
+      "dt": 1781735590,
+      "sys": {"country": "AE", "sunrise": 1781746118, "sunset": 1781795465},
+      "timezone": 14400,
+      "id": 292223,
+      "name": "Dubai",
+      "cod": 200,
+    };
+
+    final model = WeatherModel.fromJson(json);
+
+    expect(model.geticonUrl(), "https://openweathermap.org/img/wn/01n@2x.png");
+  });
+  test("should return empty string when icon is empty", () {
+    final json = <String, dynamic>{
+      "coord": {"lon": 55.3047, "lat": 25.2582},
+      "weather": [
+        {"id": 800, "main": "Clear", "description": "clear sky", "icon": ""},
+      ],
+      "base": "stations",
+      "main": {
+        "temp": 30.78,
+        "feels_like": 34.87,
+        "temp_min": 30.78,
+        "temp_max": 30.78,
+        "pressure": 1002,
+        "humidity": 62,
+        "sea_level": 1002,
+        "grnd_level": 1001,
+      },
+      "visibility": 10000,
+      "wind": {"speed": 2.84, "deg": 64, "gust": 3.14},
+      "clouds": {"all": 0},
+      "dt": 1781735590,
+      "sys": {"country": "AE", "sunrise": 1781746118, "sunset": 1781795465},
+      "timezone": 14400,
+      "id": 292223,
+      "name": "Dubai",
+      "cod": 200,
+    };
+
+    final model = WeatherModel.fromJson(json);
+
+    expect(model.geticonUrl(), "");
+  });
 
   test('WeatherModel handles null fields safely', () {
     final json = <String, dynamic>{};

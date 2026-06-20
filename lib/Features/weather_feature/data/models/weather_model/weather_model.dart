@@ -37,6 +37,13 @@ class WeatherModel {
     this.name,
     this.cod,
   });
+  String geticonUrl() {
+    if (weather![0].icon == null || weather![0].icon!.isEmpty) {
+      return '';
+    }
+
+    return 'https://openweathermap.org/img/wn/${weather![0].icon}@2x.png';
+  }
 
   factory WeatherModel.fromJson(Map<String, dynamic> json) => WeatherModel(
     coord: json['coord'] == null
@@ -65,13 +72,6 @@ class WeatherModel {
     name: json['name'] as String?,
     cod: json['cod'] as int?,
   );
-  String get iconUrl {
-    if (weather![0].icon == null) {
-      return '';
-    }
-
-    return 'https://openweathermap.org/img/wn/${weather![0].icon}@2x.png';
-  }
 
   Map<String, dynamic> toJson() => {
     'coord': coord?.toJson(),

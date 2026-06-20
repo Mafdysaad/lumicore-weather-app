@@ -86,6 +86,7 @@ void main() {
 
       expect(model.name, "Dubai");
       expect(model.weather, isA<List<Weather>>());
+      expect(model.weather!.length, 1);
     });
   });
 

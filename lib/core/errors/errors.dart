@@ -48,7 +48,7 @@ class ServerFailure extends Failure {
         return ServerFailure(response?['message'] ?? 'Unauthorized request');
 
       case 404:
-        return const ServerFailure('City not found');
+        return const ServerFailure('City name is incorrect.');
 
       case 429:
         return const ServerFailure('API limit reached');

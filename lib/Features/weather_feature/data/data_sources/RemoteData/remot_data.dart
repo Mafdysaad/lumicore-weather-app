@@ -1,5 +1,5 @@
 import 'package:weather_app_assessment/Features/weather_feature/data/models/weather_model/weather_model.dart';
-import 'package:weather_app_assessment/core/const/ApiConstants.dart';
+import 'package:weather_app_assessment/core/constant/ApiConstants.dart';
 import 'package:weather_app_assessment/core/utils/api_service.dart';
 
 class RemotData {

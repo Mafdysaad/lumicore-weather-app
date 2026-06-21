@@ -4,16 +4,14 @@ import 'package:weather_app_assessment/Features/weather_feature/domain/weather_r
 import 'package:weather_app_assessment/Features/weather_feature/presentation/view_models/cubit/weather_cubit_cubit.dart';
 import 'package:weather_app_assessment/core/utils/api_service.dart';
 
-class ServiceLocator {
-  final getit = GetIt.instance;
-  Future<void> setup() async {
-    getit.registerSingleton<ApiService>(ApiService());
-    getit.registerSingleton<RemotData>(RemotData(getit.get<ApiService>()));
-    getit.registerSingleton<WeatherRepoImplamin>(
-      WeatherRepoImplamin(remotdata: getit.get<RemotData>()),
-    );
-    getit.registerSingleton<WeatherCubitCubit>(
-      WeatherCubitCubit(getit.get<WeatherRepoImplamin>()),
-    );
-  }
+final getit = GetIt.instance;
+Future<void> setup() async {
+  getit.registerSingleton<ApiService>(ApiService());
+  getit.registerSingleton<RemotData>(RemotData(getit.get<ApiService>()));
+  getit.registerSingleton<WeatherRepoImplamin>(
+    WeatherRepoImplamin(remotdata: getit.get<RemotData>()),
+  );
+  getit.registerSingleton<WeatherCubitCubit>(
+    WeatherCubitCubit(getit.get<WeatherRepoImplamin>()),
+  );
 }

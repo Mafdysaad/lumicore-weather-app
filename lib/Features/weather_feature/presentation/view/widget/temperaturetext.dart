@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app_assessment/core/utils/fontstyle.dart';
-import 'package:weather_app_assessment/core/utils/responsive_size.dart';
 
 class Temperaturetext extends StatelessWidget {
   const Temperaturetext({

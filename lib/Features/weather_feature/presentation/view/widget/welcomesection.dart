@@ -5,8 +5,13 @@ import 'package:weather_app_assessment/core/utils/assets.dart';
 import 'package:weather_app_assessment/core/utils/fontstyle.dart';
 
 class Welcomesection extends StatelessWidget {
-  const Welcomesection({super.key});
-
+  const Welcomesection({
+    super.key,
+    required this.inMorning,
+    required this.cityName,
+  });
+  final bool inMorning;
+  final String cityName;
   @override
   Widget build(BuildContext context) {
     return SectionCard(
@@ -17,20 +22,21 @@ class Welcomesection extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(right: 13),
-              child: SvgPicture.asset(Assets.resourceImagesMoooon),
+              child: SvgPicture.asset(
+                inMorning
+                    ? Assets.resourceImagesSunnn
+                    : Assets.resourceImagesMoooon,
+              ),
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'good morning ',
+                  inMorning ? 'Good Morning' : 'Good Nigth',
                   style: Fontstyle.spacegroteskLight16(context),
                 ),
-                Text(
-                  'Mafdy Saad ',
-                  style: Fontstyle.spacegroteskMedium28(context),
-                ),
+                Text(cityName, style: Fontstyle.spacegroteskMedium28(context)),
               ],
             ),
           ],

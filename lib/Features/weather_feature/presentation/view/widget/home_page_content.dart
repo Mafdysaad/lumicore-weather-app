@@ -17,9 +17,12 @@ class HomePageContent extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(height: 20),
-          Welcomesection(),
+          Welcomesection(
+            cityName: weatherModel.name!,
+            inMorning: weatherModel.isDayTime,
+          ),
           Spacer(),
-          Weathersection(),
+          Weathersection(weatherModel: weatherModel),
           Spacer(),
           Daydetailssection(),
           SizedBox(height: 10),

@@ -8,6 +8,7 @@ import 'package:weather_app_assessment/Features/weather_feature/presentation/vie
 import 'package:weather_app_assessment/Features/weather_feature/presentation/view/widget/weathershimmer.dart';
 
 import 'package:weather_app_assessment/Features/weather_feature/presentation/view_models/cubit/weather_cubit_cubit.dart';
+import 'package:weather_app_assessment/core/utils/fontstyle.dart';
 
 class HompageView extends StatefulWidget {
   const HompageView({super.key});
@@ -29,8 +30,14 @@ class _HompageState extends State<HompageView> {
               context: context,
               builder: (_) => AlertDialog(
                 insetPadding: const EdgeInsets.symmetric(horizontal: 20),
-                title: const Text('Error'),
-                content: Text(state.massage),
+                title: Text(
+                  'Error',
+                  style: Fontstyle.spacegroteskBold24(context),
+                ),
+                content: Text(
+                  state.massage,
+                  style: Fontstyle.spacegroteskLight18(context),
+                ),
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(context),

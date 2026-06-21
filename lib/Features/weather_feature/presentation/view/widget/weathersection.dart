@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:weather_app_assessment/Features/weather_feature/data/models/weather_model/weather_model.dart';
 import 'package:weather_app_assessment/Features/weather_feature/presentation/view/widget/header.dart';
 import 'package:weather_app_assessment/Features/weather_feature/presentation/view/widget/sectionCard.dart';
 import 'package:weather_app_assessment/Features/weather_feature/presentation/view/widget/temperatureSection.dart';
@@ -6,7 +8,8 @@ import 'package:weather_app_assessment/core/utils/assets.dart';
 import 'package:weather_app_assessment/core/utils/fontstyle.dart';
 
 class Weathersection extends StatelessWidget {
-  const Weathersection({super.key});
+  const Weathersection({super.key, required this.weatherModel});
+  final WeatherModel weatherModel;
 
   @override
   Widget build(BuildContext context) {
@@ -15,18 +18,24 @@ class Weathersection extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         spacing: 10,
         children: [
-          Header(),
+          Header(cityName: weatherModel.name!),
           SizedBox(
             height: 120,
             width: double.infinity,
-            child: Image.asset(Assets.resourceImagesCloudy),
+            child: Image.network(weatherModel.geticonUrl()),
           ),
-          Temperaturesection(),
+          Temperaturesection(
+            maxtemp: weatherModel.main!.tempMax!,
+            mintemp: weatherModel.main!.tempMax!,
+          ),
           Text(
             'updated as of 12:11AM',
             style: Fontstyle.spacegroteskLight18(context),
           ),
-          Text('partly sunny', style: Fontstyle.spacegroteskSemibold(context)),
+          Text(
+            weatherModel.weather![0].main!,
+            style: Fontstyle.spacegroteskSemibold(context),
+          ),
         ],
       ),
     );

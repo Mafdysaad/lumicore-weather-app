@@ -8,7 +8,11 @@ class RemotData {
   Future<WeatherModel> getWeather(String cityName) async {
     var respons = await apiService.getWeather(
       endPoint: Apiconstants.baseUrl,
-      queryParameters: {"q": cityName, "appid": Apiconstants.token},
+      queryParameters: {
+        "q": cityName,
+        "appid": Apiconstants.token,
+        "units": "metric",
+      },
     );
     // cachData her
     var data = WeatherModel.fromJson(respons.data);

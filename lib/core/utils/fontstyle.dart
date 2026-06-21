@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app_assessment/core/theme/themecubit/theme_cubit.dart';
+
 import 'package:weather_app_assessment/core/utils/responsive_size.dart';
 
 class Fontstyle {

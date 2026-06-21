@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:weather_app_assessment/Features/weather_feature/presentation/view/widget/sectionCard.dart';
-import 'package:weather_app_assessment/Features/weather_feature/presentation/view/widget/welcomesection.dart';
 
 class Weathershimmer extends StatelessWidget {
   const Weathershimmer({super.key});

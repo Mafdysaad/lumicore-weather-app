@@ -72,6 +72,24 @@ class WeatherModel {
     name: json['name'] as String?,
     cod: json['cod'] as int?,
   );
+  bool get isDayTime {
+    final s = sys?.sunrise;
+    final e = sys?.sunset;
+    final offset = timezone;
+
+    if (s == null || e == null || offset == null) {
+      return true; // default = day
+    }
+
+    final now =
+        DateTime.now()
+            .toUtc()
+            .add(Duration(seconds: offset))
+            .millisecondsSinceEpoch ~/
+        1000;
+
+    return now >= s && now < e;
+  }
 
   Map<String, dynamic> toJson() => {
     'coord': coord?.toJson(),

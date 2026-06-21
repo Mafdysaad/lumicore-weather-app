@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:weather_app_assessment/core/utils/fontstyle.dart';
 
 class Header extends StatelessWidget {
-  const Header({super.key});
+  const Header({super.key, required this.cityName});
+  final String cityName;
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +23,7 @@ class Header extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Icon(Icons.location_on_outlined),
-                Text(
-                  'Alexandria,',
-                  style: Fontstyle.spacegroteskSemibold(context),
-                ),
+                Text(cityName, style: Fontstyle.spacegroteskSemibold(context)),
               ],
             ),
           ],

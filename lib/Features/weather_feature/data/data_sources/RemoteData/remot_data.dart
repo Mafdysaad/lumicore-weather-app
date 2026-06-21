@@ -16,7 +16,6 @@ class RemotData {
     );
     // cachData her
     var data = WeatherModel.fromJson(respons.data);
-    print("==========>$data");
     return data;
   }
 }

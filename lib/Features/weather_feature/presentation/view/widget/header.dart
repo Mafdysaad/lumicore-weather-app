@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app_assessment/core/functions/halperfunction.dart';
 import 'package:weather_app_assessment/core/utils/fontstyle.dart';
 
 class Header extends StatelessWidget {
@@ -16,7 +17,7 @@ class Header extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'wendsday 22,06,2026',
+              getFormattedDate(),
               style: Fontstyle.spacegroteskLight15(context),
             ),
             Row(

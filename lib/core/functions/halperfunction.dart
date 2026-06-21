@@ -1,1 +1,10 @@
-import 'package:weather_app_assessment/Features/weather_feature/data/models/weather_model/weather_model.dart';
+import 'package:intl/intl.dart';
+
+String getFormattedDate() {
+  final now = DateTime.now();
+
+  final dayName = DateFormat('EEEE').format(now); // Monday
+  final date = DateFormat('dd MMM yyyy').format(now); // 21 Jun 2026
+
+  return '$dayName, $date';
+}

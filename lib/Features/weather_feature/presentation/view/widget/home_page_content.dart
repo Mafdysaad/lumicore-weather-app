@@ -24,7 +24,7 @@ class HomePageContent extends StatelessWidget {
           Spacer(),
           Weathersection(weatherModel: weatherModel),
           Spacer(),
-          Daydetailssection(),
+          Daydetailssection(weatherModel: weatherModel),
           SizedBox(height: 10),
         ],
       ),

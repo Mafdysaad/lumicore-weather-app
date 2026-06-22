@@ -3,17 +3,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app_assessment/Features/weather_feature/presentation/view_models/cubit/weather_cubit_cubit.dart';
 
 class Customtextfield extends StatelessWidget {
-  const Customtextfield({super.key});
+  const Customtextfield({super.key, required this.controller});
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      onSubmitted: (nam) {
-        BlocProvider.of<WeatherCubitCubit>(context).getWeather(nam);
+      onSubmitted: (name) {
+        BlocProvider.of<WeatherCubitCubit>(context).getWeather(name);
+        controller.clear();
       },
-      onTap: () {
-        BlocProvider.of<WeatherCubitCubit>(context).loadHistory();
-      },
+      controller: controller,
       decoration: InputDecoration(
         hintMaxLines: 1,
         isDense: true,

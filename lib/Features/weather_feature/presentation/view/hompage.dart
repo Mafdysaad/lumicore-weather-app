@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => getit<WeatherCubitCubit>(),
+      create: (_) => getit<WeatherCubitCubit>()..getWeather("dubai"),
       child: const HompageView(),
     );
   }

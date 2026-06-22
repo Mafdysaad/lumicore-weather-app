@@ -11,26 +11,31 @@ class WeatherRepoImplamin extends WeatherRepo {
   final RemotData remotdata;
   final LocalDataSource localDataSource;
   WeatherRepoImplamin({required this.remotdata, required this.localDataSource});
+
   @override
   Future<Either<Failure, WeatherModel>> searchWeather(String cityName) async {
+    final cache = await localDataSource.getWeather();
     try {
-      final weather = await remotdata.getWeather(cityName);
-
-      localDataSource.cacheWeather(weather.toJson());
+      final weatherdata = await remotdata.getWeather(cityName);
+      localDataSource.cacheWeather(weatherdata.toJson());
       localDataSource.addHistory(cityName);
 
-      return right(weather);
+      return right(weatherdata);
     } on DioException catch (e) {
-      final cache = localDataSource.getWeather();
-
       if (cache != null) {
-        return right(WeatherModel.fromJson(Map<String, dynamic>.from(cache)));
+        return right(cache);
       }
 
       return left(ServerFailure.fromDioException(e));
     } catch (e) {
       return left(ServerFailure(e.toString()));
     }
+  }
+
+  @override
+  Future<WeatherModel?> getcach() async {
+    var data = await localDataSource.getWeather();
+    return data;
   }
 
   @override

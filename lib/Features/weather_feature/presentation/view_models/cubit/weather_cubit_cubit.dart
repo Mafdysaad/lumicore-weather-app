@@ -8,18 +8,23 @@ part 'weather_cubit_state.dart';
 class WeatherCubitCubit extends Cubit<WeatherCubitState> {
   WeatherCubitCubit(this.weatherRepo) : super(WeatherCubitInitial());
   final WeatherRepo weatherRepo;
+  List<String> history = [];
   Future<void> getWeather(String cityName) async {
-    emit(LodingState());
+    var data = await weatherRepo.getcach();
+    var history = weatherRepo.getHistory();
+    if (data != null) {
+      emit(LodingState());
+      emit(SuccessState(data, history));
+    }
     var reslut = await weatherRepo.searchWeather(cityName);
     reslut.fold(
       (failur) => emit(FailureState(failur.message)),
-      (weather) => emit(SuccessState(weather)),
+      (weather) => emit(SuccessState(weather, history)),
     );
   }
 
   void loadHistory() {
-    final history = weatherRepo.getHistory();
-
-    emit(HistoryLoaded(history));
+    history = weatherRepo.getHistory();
+    emit(WeatherCubitInitial());
   }
 }

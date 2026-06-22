@@ -1,9 +1,12 @@
-import 'package:hive/hive.dart';
+import 'dart:convert';
+
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:weather_app_assessment/Features/weather_feature/data/models/weather_model/weather_model.dart';
 
 class CacheManager {
-  final Box box;
+  final SharedPreferences prefs;
 
-  CacheManager(this.box);
+  CacheManager(this.prefs);
 }
 
 class LocalDataSource {
@@ -11,18 +14,24 @@ class LocalDataSource {
 
   LocalDataSource(this.cache);
 
-  void cacheWeather(Map<String, dynamic> data) {
-    cache.box.put('weather', data);
+  Future<void> cacheWeather(Map<String, dynamic> data) async {
+    await cache.prefs.remove('weather');
+    await cache.prefs.setString('weather', jsonEncode(data));
   }
 
-  Map<String, dynamic>? getWeather() {
+  Future<WeatherModel?> getWeather() async {
     print('=============> from local');
-    return cache.box.get('weather');
+
+    final data = cache.prefs.getString('weather');
+
+    if (data == null) return null;
+
+    return WeatherModel.fromJson(jsonDecode(data) as Map<String, dynamic>);
   }
 
   // HISTORY
-  void addHistory(String city) {
-    final history = List<String>.from(cache.box.get('history') ?? []);
+  Future<void> addHistory(String city) async {
+    final history = cache.prefs.getStringList('history') ?? [];
 
     history.remove(city);
     history.insert(0, city);
@@ -31,18 +40,18 @@ class LocalDataSource {
       history.removeRange(5, history.length);
     }
 
-    cache.box.put('history', history);
+    await cache.prefs.setStringList('history', history);
   }
 
   List<String> getHistory() {
-    return List<String>.from(cache.box.get('history') ?? []);
+    return cache.prefs.getStringList('history') ?? [];
   }
 
   Future<void> saveTheme(bool isDark) async {
-    await cache.box.put('isDark', isDark);
+    await cache.prefs.setBool('isDark', isDark);
   }
 
   bool getTheme() {
-    return cache.box.get('isDark', defaultValue: false);
+    return cache.prefs.getBool('isDark') ?? false;
   }
 }

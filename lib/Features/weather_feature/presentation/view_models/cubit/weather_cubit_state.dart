@@ -9,8 +9,8 @@ final class LodingState extends WeatherCubitState {}
 
 final class SuccessState extends WeatherCubitState {
   final WeatherModel weatherModel;
-
-  SuccessState(this.weatherModel);
+  final List<String> history;
+  SuccessState(this.weatherModel, this.history);
 }
 
 final class FailureState extends WeatherCubitState {

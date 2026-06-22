@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app_assessment/Features/weather_feature/presentation/view/widget/customtextfiled.dart';
-import 'package:weather_app_assessment/Features/weather_feature/presentation/view/widget/history_section.dart';
-import 'package:weather_app_assessment/Features/weather_feature/presentation/view_models/cubit/weather_cubit_cubit.dart';
+
 import 'package:weather_app_assessment/core/theme/themecubit/theme_cubit.dart';
 import 'package:weather_app_assessment/core/utils/fontstyle.dart';
 
 class Customappbar extends StatefulWidget implements PreferredSizeWidget {
-  const Customappbar({super.key});
-
+  const Customappbar({super.key, required this.textEditingController});
+  final TextEditingController textEditingController;
   @override
   State<Customappbar> createState() => _CustomappbarState();
 
@@ -19,9 +18,9 @@ class Customappbar extends StatefulWidget implements PreferredSizeWidget {
 
 class _CustomappbarState extends State<Customappbar> {
   bool isSearch = false;
+
   @override
   Widget build(BuildContext context) {
-    TextEditingController textEditingController = TextEditingController();
     return AppBar(
       actionsPadding: EdgeInsets.all(8),
       toolbarHeight: 80,
@@ -39,15 +38,7 @@ class _CustomappbarState extends State<Customappbar> {
         ),
       ),
       title: isSearch
-          ? Column(
-              children: [
-                Customtextfield(controller: textEditingController),
-                HistorySection(
-                  controller: textEditingController,
-                  history: context.watch<WeatherCubitCubit>().history,
-                ),
-              ],
-            )
+          ? Customtextfield(controller: widget.textEditingController)
           : Text("Weather", style: Fontstyle.spacegroteskSemibold(context)),
       centerTitle: true,
       actions: [

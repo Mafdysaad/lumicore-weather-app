@@ -40,6 +40,8 @@ class WeatherRepoImplamin extends WeatherRepo {
 
   @override
   List<String> getHistory() {
-    return localDataSource.getHistory();
+    var data = localDataSource.getHistory();
+    print("777777777777777777777777777777777$data");
+    return data;
   }
 }

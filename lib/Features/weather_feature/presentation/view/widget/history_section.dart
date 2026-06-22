@@ -27,6 +27,7 @@ class HistorySection extends StatelessWidget {
           label: Text(city),
           onPressed: () {
             controller.text = city;
+
             context.read<WeatherCubitCubit>().getWeather(city);
           },
         );

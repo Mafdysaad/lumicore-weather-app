@@ -32,6 +32,9 @@ class _CustomtextfieldState extends State<Customtextfield> {
         BlocProvider.of<WeatherCubitCubit>(context).getWeather(name);
         widget.controller.clear();
       },
+      onTapOutside: (event) {
+        focusNode.unfocus();
+      },
       controller: widget.controller,
       decoration: InputDecoration(
         hintMaxLines: 1,

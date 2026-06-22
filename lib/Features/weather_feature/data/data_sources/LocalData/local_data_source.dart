@@ -22,16 +22,27 @@ class LocalDataSource {
 
   // HISTORY
   void addHistory(String city) {
-    final list = List<String>.from(cache.box.get('history') ?? []);
+    final history = List<String>.from(cache.box.get('history') ?? []);
 
-    if (!list.contains(city)) {
-      list.add(city);
+    history.remove(city);
+    history.insert(0, city);
+
+    if (history.length > 5) {
+      history.removeRange(5, history.length);
     }
 
-    cache.box.put('history', list);
+    cache.box.put('history', history);
   }
 
   List<String> getHistory() {
     return List<String>.from(cache.box.get('history') ?? []);
+  }
+
+  Future<void> saveTheme(bool isDark) async {
+    await cache.box.put('isDark', isDark);
+  }
+
+  bool getTheme() {
+    return cache.box.get('isDark', defaultValue: false);
   }
 }

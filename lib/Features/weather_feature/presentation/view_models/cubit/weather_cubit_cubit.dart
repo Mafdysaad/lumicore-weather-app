@@ -16,4 +16,10 @@ class WeatherCubitCubit extends Cubit<WeatherCubitState> {
       (weather) => emit(SuccessState(weather)),
     );
   }
+
+  void loadHistory() {
+    final history = weatherRepo.getHistory();
+
+    emit(HistoryLoaded(history));
+  }
 }

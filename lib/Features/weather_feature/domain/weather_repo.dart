@@ -5,4 +5,5 @@ import 'package:weather_app_assessment/core/errors/errors.dart';
 
 abstract class WeatherRepo {
   Future<Either<Failure, WeatherModel>> searchWeather(String cityName);
+  List<String> getHistory();
 }

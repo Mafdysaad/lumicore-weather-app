@@ -32,4 +32,9 @@ class WeatherRepoImplamin extends WeatherRepo {
       return left(ServerFailure(e.toString()));
     }
   }
+
+  @override
+  List<String> getHistory() {
+    return localDataSource.getHistory();
+  }
 }

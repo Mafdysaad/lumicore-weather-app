@@ -11,6 +11,9 @@ class Customtextfield extends StatelessWidget {
       onSubmitted: (nam) {
         BlocProvider.of<WeatherCubitCubit>(context).getWeather(nam);
       },
+      onTap: () {
+        BlocProvider.of<WeatherCubitCubit>(context).loadHistory();
+      },
       decoration: InputDecoration(
         hintMaxLines: 1,
         isDense: true,

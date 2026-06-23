@@ -24,14 +24,18 @@ class Weathersection extends StatelessWidget {
         children: [
           Header(cityName: weatherModel.name!),
           SizedBox(
-            height: 120,
+            height: 190,
             width: double.infinity,
-            child: Image.network(weatherModel.geticonUrl()),
+            child: CachedNetworkImage(
+              imageUrl: weatherModel.geticonUrl(),
+              fit: BoxFit.contain,
+            ),
           ),
           Temperaturesection(
             maxtemp: weatherModel.main!.tempMax!,
             mintemp: weatherModel.main!.tempMax!,
           ),
+          SizedBox(height: 10),
           Text(
             'updated as of ${formatTime(context.read<WeatherCubitCubit>().requesTime ?? DateTime.now())}',
             style: Fontstyle.spacegroteskLight18(context),

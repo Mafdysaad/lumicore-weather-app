@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app_assessment/Features/weather_feature/data/models/weather_model/weather.dart';
+
 import 'package:weather_app_assessment/Features/weather_feature/presentation/view_models/cubit/weather_cubit_cubit.dart';
 
 class Customtextfield extends StatefulWidget {
@@ -12,38 +12,22 @@ class Customtextfield extends StatefulWidget {
 }
 
 class _CustomtextfieldState extends State<Customtextfield> {
-  late FocusNode focusNode;
   late WeatherCubitCubit cubit;
-  @override
-  void initState() {
-    cubit = context.read<WeatherCubitCubit>();
-    focusNode = FocusNode();
-    focusNode.addListener(() {
-      if (focusNode.hasFocus) {
-        cubit.showHistory();
-      } else {
-        cubit.hideHistory();
-      }
-    });
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    focusNode.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      focusNode: focusNode,
       onSubmitted: (name) {
         BlocProvider.of<WeatherCubitCubit>(context).getWeather(name);
         widget.controller.clear();
       },
       onTapOutside: (event) {
-        focusNode.unfocus();
+        context.read<WeatherCubitCubit>().hideHistory();
+      },
+      onTap: () {
+        if (context.read<WeatherCubitCubit>().history.isNotEmpty) {
+          context.read<WeatherCubitCubit>().showHistory();
+        }
       },
       controller: widget.controller,
       decoration: InputDecoration(

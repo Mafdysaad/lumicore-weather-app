@@ -14,10 +14,10 @@ class WeatherRepoImplamin extends WeatherRepo {
 
   @override
   Future<Either<Failure, WeatherModel>> searchWeather(String cityName) async {
-    final cache = await localDataSource.getWeather();
+    final cache = await localDataSource.getWeather(cityName);
     try {
       final weatherdata = await remotdata.getWeather(cityName);
-      localDataSource.cacheWeather(weatherdata.toJson());
+      localDataSource.cacheWeather(weatherdata.toJson(), cityName);
       localDataSource.addHistory(cityName);
 
       return right(weatherdata);
@@ -33,15 +33,21 @@ class WeatherRepoImplamin extends WeatherRepo {
   }
 
   @override
-  Future<WeatherModel?> getcach() async {
-    var data = await localDataSource.getWeather();
+  List<String> getHistory() {
+    var data = localDataSource.getHistory();
+    print("777777777777777777777777777777777$data");
     return data;
   }
 
   @override
-  List<String> getHistory() {
-    var data = localDataSource.getHistory();
-    print("777777777777777777777777777777777$data");
+  Future<DateTime?> getRequesTime() async {
+    var data = await localDataSource.getRequestTime();
+    return data;
+  }
+
+  @override
+  Future<String?> getcurrenCity() async {
+    var data = await localDataSource.getCurrentCity();
     return data;
   }
 }

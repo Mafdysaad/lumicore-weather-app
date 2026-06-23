@@ -11,7 +11,13 @@ final class SuccessState extends WeatherCubitState {
   final WeatherModel weatherModel;
   final List<String> history;
   final bool showHistory;
-  SuccessState(this.weatherModel, this.history, this.showHistory);
+  final String currntCity;
+  SuccessState(
+    this.weatherModel,
+    this.history,
+    this.showHistory,
+    this.currntCity,
+  );
 }
 
 final class FailureState extends WeatherCubitState {

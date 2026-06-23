@@ -8,3 +8,13 @@ String getFormattedDate() {
 
   return '$dayName, $date';
 }
+
+String formatTime(DateTime dateTime) {
+  final hour = dateTime.hour;
+  final minute = dateTime.minute;
+
+  final period = hour >= 12 ? 'PM' : 'AM';
+  final formattedHour = hour % 12 == 0 ? 12 : hour % 12;
+
+  return '$formattedHour:${minute.toString().padLeft(2, '0')} $period';
+}

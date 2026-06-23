@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app_assessment/Features/weather_feature/data/models/weather_model/weather.dart';
 import 'package:weather_app_assessment/Features/weather_feature/presentation/view_models/cubit/weather_cubit_cubit.dart';
 
 class Customtextfield extends StatefulWidget {
@@ -11,17 +12,26 @@ class Customtextfield extends StatefulWidget {
 }
 
 class _CustomtextfieldState extends State<Customtextfield> {
-  FocusNode focusNode = FocusNode();
+  late FocusNode focusNode;
+  late WeatherCubitCubit cubit;
   @override
   void initState() {
+    cubit = context.read<WeatherCubitCubit>();
+    focusNode = FocusNode();
     focusNode.addListener(() {
       if (focusNode.hasFocus) {
-        context.read<WeatherCubitCubit>().showHistory();
+        cubit.showHistory();
       } else {
-        context.read<WeatherCubitCubit>().hideHistory();
+        cubit.hideHistory();
       }
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    focusNode.dispose();
+    super.dispose();
   }
 
   @override

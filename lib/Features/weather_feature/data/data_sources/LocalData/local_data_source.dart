@@ -14,19 +14,50 @@ class LocalDataSource {
 
   LocalDataSource(this.cache);
 
-  Future<void> cacheWeather(Map<String, dynamic> data) async {
-    await cache.prefs.remove('weather');
+  Future<void> cacheWeather(Map<String, dynamic> data, String cityName) async {
+    await cache.prefs.remove(cityName);
     await cache.prefs.setString('weather', jsonEncode(data));
   }
 
-  Future<WeatherModel?> getWeather() async {
+  Future<WeatherModel?> getWeather(String cityName) async {
     print('=============> from local');
 
-    final data = cache.prefs.getString('weather');
+    final data = cache.prefs.getString(cityName);
+
+    if (data == null) return null;
+    print('ddddddddddddddddddddddddd$data');
+    await cache.prefs.remove('weather');
+    return WeatherModel.fromJson(jsonDecode(data) as Map<String, dynamic>);
+  }
+
+  Future<void> cachedRequestTime(DateTime datetime) async {
+    await cache.prefs.remove('weather');
+    await cache.prefs.setString('weather', jsonEncode(datetime.hour));
+  }
+
+  Future<DateTime?> getRequestTime() async {
+    print('=============> from local');
+
+    final data = cache.prefs.getString('RequestTime');
 
     if (data == null) return null;
 
-    return WeatherModel.fromJson(jsonDecode(data) as Map<String, dynamic>);
+    return jsonDecode(data) as DateTime;
+  }
+
+  Future<void> cachedCurrentCity(String cityName) async {
+    await cache.prefs.remove('CurrentCity');
+    await cache.prefs.setString('CurrentCity', jsonEncode(cityName));
+  }
+
+  Future<String?> getCurrentCity() async {
+    print('=============> from local');
+
+    final data = cache.prefs.getString('CurrentCity');
+
+    if (data == null) return null;
+
+    return jsonDecode(data) as String;
   }
 
   // HISTORY

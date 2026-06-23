@@ -19,6 +19,11 @@ class HompageView extends StatefulWidget {
 
 class _HompageViewState extends State<HompageView> {
   TextEditingController textEditingController = TextEditingController();
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,20 +51,25 @@ class _HompageViewState extends State<HompageView> {
           switch (state) {
             case LodingState():
               return const Weathershimmer();
-
             case SuccessState():
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Column(
+              return RefreshIndicator(
+                onRefresh: () async {
+                  print('cuuuuuuuuuuuuuuuu${state.currntCity}');
+                  context.read<WeatherCubitCubit>().getWeather(
+                    state.currntCity,
+                  );
+                },
+                child: ListView(
+                  shrinkWrap: true,
+                  physics: const AlwaysScrollableScrollPhysics(),
                   children: [
                     if (state.showHistory)
                       HistorySection(
                         history: state.history,
                         controller: textEditingController,
                       ),
-                    Expanded(
-                      child: HomePageContent(weatherModel: state.weatherModel),
-                    ),
+
+                    HomePageContent(weatherModel: state.weatherModel),
                   ],
                 ),
               );

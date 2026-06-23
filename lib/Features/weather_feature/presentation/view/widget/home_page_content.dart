@@ -8,6 +8,7 @@ import 'package:weather_app_assessment/Features/weather_feature/presentation/vie
 
 class HomePageContent extends StatelessWidget {
   final WeatherModel weatherModel;
+
   const HomePageContent({super.key, required this.weatherModel});
 
   @override
@@ -19,9 +20,9 @@ class HomePageContent extends StatelessWidget {
           cityName: weatherModel.name!,
           inMorning: weatherModel.isDayTime,
         ),
-        Spacer(),
+        SizedBox(height: 20),
         Weathersection(weatherModel: weatherModel),
-        Spacer(),
+        SizedBox(height: 20),
         Daydetailssection(weatherModel: weatherModel),
         SizedBox(height: 10),
       ],
